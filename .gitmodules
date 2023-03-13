@@ -1,0 +1,4 @@
+[submodule "sample/basic_controller/components/esp-nimble-cpp"]
+	path = sample/basic_controller/components/esp-nimble-cpp
+	url = https://github.com/JPZV/esp-nimble-cpp
+	branch = patch-1

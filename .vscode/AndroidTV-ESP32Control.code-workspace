@@ -1,0 +1,24 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../sample/basic_controller"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"xstring": "cpp",
+			"chrono": "cpp",
+			"xlocale": "cpp",
+			"functional": "cpp",
+			"map": "cpp",
+			"random": "cpp",
+			"string": "cpp",
+			"memory": "cpp",
+			"semaphore": "cpp",
+			"stop_token": "cpp"
+		}
+	}
+}
