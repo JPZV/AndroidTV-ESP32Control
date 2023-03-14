@@ -387,10 +387,10 @@ void TVControl::sendReport(void)
     }
 }
 
-void TVControl::press(TVControlButton b)
+void TVControl::press(TVControlButton button)
 {
-    uint8_t index = (b - 1) / 8;
-    uint8_t bit = (b - 1) % 8;
+    uint8_t index = (button - 1) / 8;
+    uint8_t bit = (button - 1) % 8;
     uint8_t bitmask = (1 << bit);
 
     uint8_t result = _buttons[index] | bitmask;
@@ -406,10 +406,10 @@ void TVControl::press(TVControlButton b)
     }
 }
 
-void TVControl::release(TVControlButton b)
+void TVControl::release(TVControlButton button)
 {
-    uint8_t index = (b - 1) / 8;
-    uint8_t bit = (b - 1) % 8;
+    uint8_t index = (button - 1) / 8;
+    uint8_t bit = (button - 1) % 8;
     uint8_t bitmask = (1 << bit);
 
     uint64_t result = _buttons[index] & ~bitmask;
@@ -425,22 +425,22 @@ void TVControl::release(TVControlButton b)
     }
 }
 
-void TVControl::setState(TVControlButton b, bool s)
+void TVControl::setState(TVControlButton button, bool state)
 {
-    if (b)
+    if (state)
     {
-        press(b);
+        press(button);
     }
     else
     {
-        release(b);
+        release(button);
     }
 }
 
-bool TVControl::isPressed(TVControlButton b)
+bool TVControl::isPressed(TVControlButton button)
 {
-    uint8_t index = (b - 1) / 8;
-    uint8_t bit = (b - 1) % 8;
+    uint8_t index = (button - 1) / 8;
+    uint8_t bit = (button - 1) % 8;
     uint8_t bitmask = (1 << bit);
 
     if ((bitmask & _buttons[index]) > 0)

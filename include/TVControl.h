@@ -136,11 +136,11 @@
             TVControl(std::string deviceName = "ESP32 TV Control", std::string deviceManufacturer = "Espressif", uint8_t batteryLevel = 100);
             void begin(TVControlConfiguration *config = new TVControlConfiguration());
             void end(void);
-            void press(TVControlButton b);
-            void release(TVControlButton b);
-            void setState(TVControlButton b, bool s);
+            void press(TVControlButton button);
+            void release(TVControlButton button);
+            void setState(TVControlButton button, bool state);
             void sendReport();
-            bool isPressed(TVControlButton b);
+            bool isPressed(TVControlButton button);
             bool isConnected(void);
             void resetButtons();
             void setBatteryLevel(uint8_t level);
