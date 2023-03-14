@@ -2,8 +2,8 @@
 
 TVControlConfiguration::TVControlConfiguration() :  _autoReport(true),
                                                     _hidReportId(1),
-                                                    _vid(0x2717),
-                                                    _pid(0x32b9),
+                                                    _vid(0xe502),
+                                                    _pid(0xbbab),
                                                     _modelNumber("1.0.0"),
                                                     _softwareRevision("1.0.0"),
                                                     _serialNumber("0123456789"),

@@ -110,7 +110,7 @@ void TVControl::begin(TVControlConfiguration *config)
 
     // REPORT_COUNT (24)
     tempHidReportDescriptor[hidReportDescriptorSize++] = 0x95;
-    tempHidReportDescriptor[hidReportDescriptorSize++] = 0x01;
+    tempHidReportDescriptor[hidReportDescriptorSize++] = 0x24;
 
     // USAGE (Menu Pick)
     tempHidReportDescriptor[hidReportDescriptorSize++] = 0x09;
@@ -223,7 +223,7 @@ void TVControl::begin(TVControlConfiguration *config)
     tempHidReportDescriptor[hidReportDescriptorSize++] = 0x81;
     tempHidReportDescriptor[hidReportDescriptorSize++] = 0x02;
 
-    // END_COLLECTION (Application)
+    // END_COLLECTION (Main Application)
     tempHidReportDescriptor[hidReportDescriptorSize++] = 0xC0;
 
     //----------KEYBOARD----------
@@ -277,11 +277,11 @@ void TVControl::begin(TVControlConfiguration *config)
 
     // REPORT_SIZE (1)
     tempHidReportDescriptor[hidReportDescriptorSize++] = 0x75;
-    tempHidReportDescriptor[hidReportDescriptorSize++] = 0x01;
+    tempHidReportDescriptor[hidReportDescriptorSize++] = 0x08;
 
     // REPORT_COUNT (8)
     tempHidReportDescriptor[hidReportDescriptorSize++] = 0x95;
-    tempHidReportDescriptor[hidReportDescriptorSize++] = 0x08;
+    tempHidReportDescriptor[hidReportDescriptorSize++] = 0x01;
 
     // INPUT (Constant)
     tempHidReportDescriptor[hidReportDescriptorSize++] = 0x81;
@@ -521,7 +521,7 @@ void TVControl::taskServer(void *pvParameter)
     controlInstance->onStarted(pServer);
 
     NimBLEAdvertising *pAdvertising = pServer->getAdvertising();
-    pAdvertising->setAppearance(GENERIC_HID);
+    pAdvertising->setAppearance(HID_KEYBOARD);
     pAdvertising->addServiceUUID(controlInstance->hid->hidService()->getUUID());
     pAdvertising->start();
     controlInstance->hid->setBatteryLevel(controlInstance->batteryLevel);
