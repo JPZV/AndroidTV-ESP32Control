@@ -23,6 +23,7 @@ static const char *LOG_TAG = "TVControl";
 #define CHARACTERISTIC_UUID_HARDWARE_REVISION  "2A27"      // Characteristic - Hardware Revision String - 0x2A27
 
 
+uint8_t lastReportButtons[BUTTONS_ARRAY_LENGTH];
 uint8_t tempHidReportDescriptor[145];
 int hidReportDescriptorSize = 0;
 uint16_t vid;
@@ -369,8 +370,20 @@ void TVControl::sendReport(void)
 {
     if (this->isConnected())
     {
-        this->inputGamepad->setValue(_buttons, sizeof(_buttons));
-        this->inputGamepad->notify();
+        bool shouldReport = false;
+        for (int i = 0; i < BUTTONS_ARRAY_LENGTH; i++)
+        {
+            if (_buttons[i] != lastReportButtons[i])
+            {
+                shouldReport = true;
+            }
+            lastReportButtons[i] = _buttons[i];
+        }
+        if (shouldReport)
+        {
+            this->inputGamepad->setValue(_buttons, sizeof(_buttons));
+            this->inputGamepad->notify();
+        }
     }
 }
 

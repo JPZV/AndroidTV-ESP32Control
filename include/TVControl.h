@@ -12,6 +12,8 @@
         #include "NimBLECharacteristic.h"
         #include "TVControlConfiguration.h"
 
+        #define BUTTONS_ARRAY_LENGTH 3
+
         typedef enum
         {
             /**
@@ -119,7 +121,7 @@
         class TVControl
         {
         private:
-            uint8_t _buttons[3]; // 8 bits x 3 --> 24 bits (buttons)
+            uint8_t _buttons[BUTTONS_ARRAY_LENGTH]; // 8 bits x 3 --> 24 bits (buttons)
 
             TVControlConfiguration configuration;
 
